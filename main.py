@@ -4,9 +4,10 @@ import pika
 def main():
     parameters = pika.URLParameters("amqp://full_posts_parser:nJ6A07XT5PgY@192.168.5.46:5672/smi_tasks")
     connection = pika.BlockingConnection(parameters=parameters)
-    channel = connection.channel()
+    channel = connection.channel(channel_number=123)
 
     def callback(ch, method, properties, body):
+        print(ch.channel_number)
         print(" [x] Received %r" % body)
         # ch.basic_ack(delivery_tag=method.delivery_tag)
 
