@@ -28,6 +28,7 @@ def main():
         print(e)
     connection.close()
 
+    channel = connection.channel(channel_number=123)
 
     def callback(ch, method, properties, body):
         print(ch.channel_number)
