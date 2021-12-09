@@ -19,13 +19,14 @@ def main():
         "images": [],
         "keyword_id": 10000002,
     }
-    try:
-        channel.basic_publish(exchange='',
-                              routing_key='привет',
-                              body=json.dumps(rmq_json_data))
-        print("SAVE")
-    except Exception as e:
-        print(e)
+    while True:
+        try:
+            channel.basic_publish(exchange='',
+                                  routing_key='привет',
+                                  body=json.dumps(rmq_json_data))
+            print("SAVE")
+        except Exception as e:
+            print(e)
     connection.close()
 
     # parameters = pika.URLParameters("amqp://full_posts_parser:nJ6A07XT5PgY@192.168.5.46:5672/smi_tasks")
