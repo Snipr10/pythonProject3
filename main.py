@@ -28,16 +28,16 @@ def main():
         print(e)
     connection.close()
 
-    #
-    # def callback(ch, method, properties, body):
-    #     print(ch.channel_number)
-    #     print(" [x] Received %r" % body)
-    #     # ch.basic_ack(delivery_tag=method.delivery_tag)
-    #
-    # channel.basic_consume(queue='smi_posts', on_message_callback=callback, auto_ack=False)
-    #
-    # print(' [*] Waiting for messages. To exit press CTRL+C')
-    # channel.start_consuming()
+
+    def callback(ch, method, properties, body):
+        print(ch.channel_number)
+        print(" [x] Received %r" % body)
+        # ch.basic_ack(delivery_tag=method.delivery_tag)
+
+    channel.basic_consume(queue='smi_posts', on_message_callback=callback, auto_ack=False)
+
+    print(' [*] Waiting for messages. To exit press CTRL+C')
+    channel.start_consuming()
 
 
 if __name__ == '__main__':
