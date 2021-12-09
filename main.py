@@ -23,6 +23,7 @@ def main():
         channel.basic_publish(exchange='',
                               routing_key='привет',
                               body=json.dumps(rmq_json_data))
+        print("SAVE")
     except Exception as e:
         print(e)
     connection.close()
