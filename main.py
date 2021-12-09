@@ -28,19 +28,19 @@ def main():
         print(e)
     connection.close()
 
-    parameters = pika.URLParameters("amqp://full_posts_parser:nJ6A07XT5PgY@192.168.5.46:5672/smi_tasks")
-    connection = pika.BlockingConnection(parameters=parameters)
-    channel = connection.channel(channel_number=124)
-
-    def callback(ch, method, properties, body):
-        print(ch.channel_number)
-        print(" [x] Received %r" % body)
-        # ch.basic_ack(delivery_tag=method.delivery_tag)
-
-    channel.basic_consume(queue='smi_posts', on_message_callback=callback, auto_ack=False)
-
-    print(' [*] Waiting for messages. To exit press CTRL+C')
-    channel.start_consuming()
+    # parameters = pika.URLParameters("amqp://full_posts_parser:nJ6A07XT5PgY@192.168.5.46:5672/smi_tasks")
+    # connection = pika.BlockingConnection(parameters=parameters)
+    # channel = connection.channel(channel_number=124)
+    #
+    # def callback(ch, method, properties, body):
+    #     print(ch.channel_number)
+    #     print(" [x] Received %r" % body)
+    #     # ch.basic_ack(delivery_tag=method.delivery_tag)
+    #
+    # channel.basic_consume(queue='smi_posts', on_message_callback=callback, auto_ack=False)
+    #
+    # print(' [*] Waiting for messages. To exit press CTRL+C')
+    # channel.start_consuming()
 
 
 if __name__ == '__main__':
